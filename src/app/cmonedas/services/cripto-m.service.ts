@@ -10,7 +10,7 @@ export class CriptoMService {
   Encontrar = false;
   noFound = false;
   private apiKey : string = "6802c690b44b2b6c53e933a6dbce7da36ce975af";//API key que se optiene en giphy
-    private apiUrl: string = 'http://api.nomics.com/v1/currencies';
+    private apiUrl: string = 'https://api.nomics.com/v1/currencies';
   get httpParams () {
     //indicamos los parámetros que queremos que nos devuelva la petición
     //depende de como funcione la API
