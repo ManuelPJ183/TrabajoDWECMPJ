@@ -7,6 +7,7 @@ import { CriptoMoneda } from '../interfaces/cripto.interfaces';
   providedIn: 'root'
 })
 export class CriptoMService {
+  private corsAnywhere:string = 'https://cors-anywhere.herokuapp.com/';
   Encontrar = false;
   noFound = false;
   private apiKey : string = "6802c690b44b2b6c53e933a6dbce7da36ce975af";//API key que se optiene en giphy
@@ -67,20 +68,20 @@ var BusqMayu = namebusq.toLocaleUpperCase();
       localStorage.setItem("historial", JSON.stringify(this._historial));
     }
     this.historialG = JSON.parse(localStorage.getItem('historial')  || '[]');
-        this.http.get<CriptoMoneda[]>(`${ this.apiUrl }/ticker?key=${ this.apiKey }&ids=${ BusqMayu }`).subscribe(
+        this.http.get<CriptoMoneda[]>(`https://cors-anywhere.herokuapp.com/${ this.apiUrl }/ticker?key=${ this.apiKey }&ids=${ BusqMayu }`).subscribe(
       (response) => {
         if  (response.length <= 0){
           this.noFound = true
           this.Encontrar = false
           console.log(this.noFound);
           this.resultados = response;
-          return this.http.get<CriptoMoneda[]>(`${ this.apiUrl }/ticker?key=${ this.apiKey }&ids=${ BusqMayu }`);
+          return this.http.get<CriptoMoneda[]>(`https://cors-anywhere.herokuapp.com/${ this.apiUrl }/ticker?key=${ this.apiKey }&ids=${ BusqMayu }`);
         }else{
           this.noFound = false
           this.Encontrar = true
           console.log(this.noFound);
           this.resultados = response;
-        return this.http.get<CriptoMoneda[]>(`${ this.apiUrl }/ticker?key=${ this.apiKey }&ids=${ BusqMayu }`);
+        return this.http.get<CriptoMoneda[]>(`https://cors-anywhere.herokuapp.com/${ this.apiUrl }/ticker?key=${ this.apiKey }&ids=${ BusqMayu }`);
         }
       },
       );
@@ -88,8 +89,8 @@ var BusqMayu = namebusq.toLocaleUpperCase();
 
 
   BuscarBitCoinDS( termino: string ):Observable<CriptoMoneda[]>{
-    console.log(this.http.get<CriptoMoneda[]>(`${ this.apiUrl }/ticker?key=${ this.apiKey }&ids=${ termino }`));
-    return this.http.get<CriptoMoneda[]>(`${ this.apiUrl }/ticker?key=${ this.apiKey }&ids=${ termino }`)
+    console.log(this.http.get<CriptoMoneda[]>(`https://cors-anywhere.herokuapp.com/${ this.apiUrl }/ticker?key=${ this.apiKey }&ids=${ termino }`));
+    return this.http.get<CriptoMoneda[]>(`https://cors-anywhere.herokuapp.com/${ this.apiUrl }/ticker?key=${ this.apiKey }&ids=${ termino }`)
     }
 
 
@@ -97,7 +98,7 @@ var BusqMayu = namebusq.toLocaleUpperCase();
     this.noFound = false;
         const params = new HttpParams()
     var CurrentDate = new Date();
-         this.http.get<CriptoMoneda[]>(`https://api.nomics.com/v1/currencies/ticker?key=6802c690b44b2b6c53e933a6dbce7da36ce975af&limit=10&status=active&per-page=10&interval=1d&order=desc`).subscribe(
+         this.http.get<CriptoMoneda[]>(`https://cors-anywhere.herokuapp.com/https://api.nomics.com/v1/currencies/ticker?key=6802c690b44b2b6c53e933a6dbce7da36ce975af&limit=10&status=active&per-page=10&interval=1d&order=desc`).subscribe(
        (response) => {
          if  (response.length <= 0){
            this.noFound = true
